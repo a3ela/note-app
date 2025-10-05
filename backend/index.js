@@ -4,7 +4,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static('dist'))
 const requestLogger = (req, res, next) => {
   console.log("Method: ", req.method);
   console.log("path: ", req.path);
@@ -32,10 +32,6 @@ let notes = [
     important: true,
   },
 ];
-
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
 
 // All notes
 app.get("/api/notes", (req, res) => {
